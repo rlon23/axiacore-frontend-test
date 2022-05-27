@@ -13,6 +13,7 @@ body {
 
 .header {
   background-color: #0f0f0f;
+  height: 70px;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -53,7 +54,6 @@ body {
 .header__menu-toggle {
   border: 0;
   background-color: transparent;
-  cursor: pointer;
   margin-right: 0.8125rem;
 }
 
@@ -80,8 +80,158 @@ body {
   line-height: normal;
 }
 
-.header .icon--white {
+.header__logo, .header__search, .header__cart, .header__menu-toggle {
+  cursor: pointer;
+}
+
+.main .img {
+  line-height: 0;
+}
+
+.main .img img {
+  height: auto;
+  width: 100%;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer .call-to-action {
+  min-height: 209px;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  padding: 36px;
+}
+
+.footer .call-to-action .question {
+  font-size: 0.885rem;
+  font-weight: 700;
+  line-height: 1.2519rem;
+  margin-bottom: 18px;
+}
+
+.footer .call-to-action .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 12px;
+}
+
+.footer .call-to-action .buttons .chat,
+.footer .call-to-action .buttons .llamar {
+  width: 70px;
+  font-size: 0.7375rem;
+  font-weight: 700;
+}
+
+.footer .call-to-action .buttons .chat .btn,
+.footer .call-to-action .buttons .llamar .btn {
+  height: 70px;
+  width: 70px;
+  border: 0;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.footer .links {
+  margin-top: 36px;
+}
+
+.footer .links .item {
+  margin-bottom: 18px;
+  list-style: none;
+}
+
+.footer .links .item .link {
+  font-size: 0.885rem;
+}
+
+.footer .break {
+  margin: 36px auto;
+  width: 40px;
+  border: 0;
+  height: 1px;
+  background: #c8d5d9;
+}
+
+.footer .instagram {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.footer .instagram .link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #0000a3;
+}
+
+.footer .data-policy {
+  font-size: 0.7375rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-top: 18px;
+  margin-bottom: 36px;
+}
+
+.footer .data-policy .link {
+  font-size: 0.7375rem;
+}
+
+.footer .copyright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 47px;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.6875rem;
+}
+
+.icon--white {
   -webkit-filter: invert(98%) sepia(67%) saturate(0%) hue-rotate(148deg) brightness(118%) contrast(100%);
           filter: invert(98%) sepia(67%) saturate(0%) hue-rotate(148deg) brightness(118%) contrast(100%);
+}
+
+.link {
+  font-size: 0.885rem;
+  font-weight: 700;
+  color: #0f0f0f;
+  text-transform: capitalize;
+  text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */
