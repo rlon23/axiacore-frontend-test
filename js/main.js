@@ -1,6 +1,15 @@
-let beers;
+function getData() {
+  fetch('./../products.json')
+    .then((res) => res.json())
+    .then((data) => createHTML(data));
+}
 
-fetch('./../products.json')
-  .then((res) => res.json())
-  .then((data) => (beers = data))
-  .then(() => console.log(beers));
+function createHTML(productsData) {
+  var emptyTemplate = document.getElementById('productsTemplate').innerHTML;
+  var compiledTemplate = Handlebars.compile(emptyTemplate);
+  var generatedHTML = compiledTemplate(productsData);
+  var productsContainer = document.querySelector('.products-container');
+  productsContainer.innerHTML = generatedHTML;
+}
+
+getData();

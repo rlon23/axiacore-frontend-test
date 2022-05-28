@@ -101,63 +101,25 @@
     <main class="main">
       <h1 class="product-category">cervezas</h1>
 
-      <ul class="products-container">
-        <li class="product-card">
-          <div class="product-info">
-            <div class="img">
-              <img src="./img/camba.png" alt="" />
+      <script id="productsTemplate" type="text/x-handlebars-template">
+        {{#each products}}
+          <li class='product-card'>
+            <div class='product-info'>
+              <div class='img'>
+                <img src='./img/{{img}}' alt='' />
+              </div>
+              <p class='name'>{{name}}</p>
+              <p class='description'>
+                {{description}}
+              </p>
+              <p class='price'>{{price}}</p>
             </div>
-            <p class="name">Camba Pale Ale</p>
-            <p class="description">
-              La Souche Franc-Bois d’hiver. Cerveza pale.
-            </p>
-            <p class="price">$75.000</p>
-          </div>
-          <button class="add-to-cart">agregar</button>
-        </li>
+            <button class='add-to-cart'>agregar</button>
+          </li>
+        {{/each}}
+      </script>
 
-        <li class="product-card">
-          <div class="product-info">
-            <div class="img">
-              <img src="./img/camba.png" alt="" />
-            </div>
-            <p class="name">Camba Pale Ale</p>
-            <p class="description">
-              La Souche Franc-Bois d’hiver. Cerveza pale.
-            </p>
-            <p class="price">$75.000</p>
-          </div>
-          <button class="add-to-cart">agregar</button>
-        </li>
-
-        <li class="product-card">
-          <div class="product-info">
-            <div class="img">
-              <img src="./img/camba.png" alt="" />
-            </div>
-            <p class="name">Camba Pale Ale</p>
-            <p class="description">
-              La Souche Franc-Bois d’hiver. Cerveza pale.
-            </p>
-            <p class="price">$75.000</p>
-          </div>
-          <button class="add-to-cart">agregar</button>
-        </li>
-
-        <li class="product-card">
-          <div class="product-info">
-            <div class="img">
-              <img src="./img/camba.png" alt="" />
-            </div>
-            <p class="name">Camba Pale Ale</p>
-            <p class="description">
-              La Souche Franc-Bois d’hiver. Cerveza pale.
-            </p>
-            <p class="price">$75.000</p>
-          </div>
-          <button class="add-to-cart">agregar</button>
-        </li>
-      </ul>
+      <ul class="products-container"></ul>
 
       <button class="keep-shopping">
         <div class="text">
