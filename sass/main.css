@@ -16,6 +16,7 @@ body {
   height: 70px;
   position: -webkit-sticky;
   position: sticky;
+  z-index: 2;
   top: 0;
 }
 
@@ -220,7 +221,7 @@ body {
   text-transform: capitalize;
 }
 
-.main .filter {
+.main .filter-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -242,12 +243,158 @@ body {
   border: 0;
 }
 
-.main .filter .text {
+.main .filter-btn .text {
   text-transform: uppercase;
   font-size: 0.885rem;
   font-weight: 700;
   color: #ffffff;
   margin-right: 0.4375rem;
+}
+
+.main .filter-modal {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+  left: 0;
+  top: 0;
+}
+
+.main .filter-modal .background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main .filter-modal .options {
+  position: absolute;
+  background-color: #ffffff;
+  width: 100%;
+  height: 284px;
+  bottom: 5px;
+  left: 0;
+  z-index: 3;
+}
+
+.main .filter-modal .options .container {
+  padding: 12px 15px 0;
+}
+
+.main .filter-modal .options .container .title {
+  font-weight: 700;
+  font-size: 1.275rem;
+  line-height: 1.795rem;
+  margin-bottom: 12px;
+}
+
+.main .filter-modal .options .container .break {
+  margin: 13px 0;
+  border: 0;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+.main .filter-modal .options .container .checkbox-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main .filter-modal .options .container .checkbox-group .label {
+  font-size: 0.885rem;
+  font-weight: 400;
+  color: #0f0f0f;
+}
+
+.main .filter-modal .options .container .checkbox-group .input {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+}
+
+.main .filter-modal .options .container .checkbox-group .input:checked {
+  color: red;
+}
+
+.main .filter-modal .options .filter-buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 14px 15px;
+  background-color: #f4f4f4;
+}
+
+.main .filter-modal .options .filter-buttons .filter-clear,
+.main .filter-modal .options .filter-buttons .filter-apply {
+  height: 40px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-size: 0.885rem;
+  font-weight: 700;
+}
+
+.main .filter-modal .options .filter-buttons .filter-clear {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+}
+
+.main .filter-modal .options .filter-buttons .filter-apply {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #0000a3;
+  border: 0;
+}
+
+.main .filter-modal .options .filter-buttons .filter-apply .text {
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.main .filter-modal .options .filter-buttons .filter-apply .filters {
+  width: 26px;
+  height: 18px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.main .filter-modal .options .filter-buttons .filter-apply .filters .amount {
+  font-size: 0.885rem;
+  font-weight: 600;
+  color: #0f0f0f;
+}
+
+.main .filter-modal .options .close-modal {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  top: -18px;
+  right: 15px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 
 .footer {

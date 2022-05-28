@@ -105,7 +105,7 @@
 
       <script id="productsTemplate" type="text/x-handlebars-template">
         {{#each products}}
-          <li class='product-card'>
+          <li class='product-card {{filterId}}'>
             <div class='product-info'>
               <div class='img'>
                 <img src='./img/{{img}}' alt='' />
@@ -142,7 +142,7 @@
         </svg>
       </button>
 
-      <button class="filter">
+      <button class="filter-btn">
         <p class="text">filtrar</p>
         <svg
           class="filter__icon icon--white"
@@ -160,6 +160,73 @@
           />
         </svg>
       </button>
+
+      <div class="filter-modal">
+        <div class="background"></div>
+        <div class="options">
+          <div class="container">
+            <h3 class="title">Filtros</h3>
+            <hr class="break" />
+            <div class="checkbox-group">
+              <label for="rubia" class="label">Rubia</label>
+              <input type="checkbox" id="rubia" name="filtros" class="input" />
+            </div>
+            <hr class="break" />
+            <div class="checkbox-group">
+              <label for="morena" class="label">Morena</label>
+              <input type="checkbox" id="morena" name="filtros" class="input" />
+            </div>
+            <hr class="break" />
+            <div class="checkbox-group">
+              <label for="roja" class="label">Roja</label>
+              <input type="checkbox" id="roja" name="filtros" class="input" />
+            </div>
+            <hr class="break" />
+          </div>
+
+          <div class="filter-buttons">
+            <button class="filter-clear">Limpiar</button>
+            <button class="filter-apply">
+              <p class="text">Filtrar</p>
+              <svg
+                class="filter__icon icon--white"
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.10882 4.83059C4.93001 4.60261 4.9764 4.27779 5.21243 4.10508C5.30561 4.0369 5.41931 4 5.53621 4H19.4638C19.7599 4 20 4.23186 20 4.51787C20 4.63077 19.9618 4.74059 19.8912 4.83059L13.8405 12.5448V18.4821C13.8405 18.5843 13.8091 18.6843 13.7504 18.7693C13.5861 19.0073 13.2533 19.0716 13.0069 18.913L11.3983 17.8772C11.2492 17.7812 11.1596 17.6195 11.1596 17.4463V12.5448L5.10882 4.83059Z"
+                  fill="black"
+                />
+              </svg>
+              <div class="filters">
+                <p class="amount">0</p>
+              </div>
+            </button>
+          </div>
+
+          <button class="close-modal" aria-label="Close Filter Modal">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M19.2028 6.47484C19.5933 6.08432 19.5933 5.45116 19.2028 5.06063L18.8492 4.70708C18.4587 4.31655 17.8255 4.31655 17.435 4.70708L12.6621 9.48C12.2716 9.87052 11.6384 9.87052 11.2479 9.48L6.47495 4.70708C6.08442 4.31655 5.45126 4.31655 5.06073 4.70708L4.70718 5.06063C4.31665 5.45116 4.31665 6.08432 4.70718 6.47484L9.4801 11.2478C9.87062 11.6383 9.87062 12.2715 9.4801 12.662L4.70708 17.435C4.31655 17.8255 4.31655 18.4587 4.70708 18.8492L5.06063 19.2028C5.45116 19.5933 6.08432 19.5933 6.47484 19.2028L11.2479 14.4297C11.6384 14.0392 12.2716 14.0392 12.6621 14.4297L17.4351 19.2028C17.8256 19.5933 18.4588 19.5933 18.8493 19.2028L19.2029 18.8492C19.5934 18.4587 19.5934 17.8255 19.2029 17.435L14.4298 12.662C14.0393 12.2715 14.0393 11.6383 14.4298 11.2478L19.2028 6.47484Z"
+                fill="black"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
