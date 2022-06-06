@@ -52,12 +52,10 @@ class ProductsList {
 
 // new productList object
 let productsList = new ProductsList('cervezas');
-console.log(productsList);
 
 // gets filter modal button and close button
 let filterModalToggle = document.querySelector('.filter-btn');
 let filterCloseModal = document.querySelector('.close-modal');
-
 let filterModalMenu = document.querySelector('.filter-modal');
 let bodyEl = document.body;
 
@@ -76,12 +74,27 @@ function toggleFilterModal() {
   }
 }
 
+//filter counter element
+let filterAmountEl = document.getElementsByClassName('amount');
+let filterAmountContainer = document.getElementsByClassName('filters');
+
+function changeFilterAmount() {
+  if (productsList.filtersLength == 0) {
+    Array.from(filterAmountContainer).map((i) => (i.style.display = 'none'));
+  } else {
+    Array.from(filterAmountContainer).map((i) => (i.style.display = 'block'));
+  }
+  Array.from(filterAmountEl).map(
+    (i) => (i.innerHTML = productsList.filtersLength)
+  );
+}
+
 // checkboxes elements
 let checkboxes = document.getElementsByClassName('input');
 
 // add listeners to checkbox and adds filters to the array
-Array.prototype.forEach.call(checkboxes, function (elem) {
-  elem.addEventListener('change', function () {
+Array.prototype.forEach.call(checkboxes, (elem) => {
+  elem.addEventListener('change', () => {
     productsList.changeFilters = Array.from(checkboxes)
       .filter((i) => i.checked)
       .map((i) => {
@@ -95,6 +108,29 @@ Array.prototype.forEach.call(checkboxes, function (elem) {
           return 3;
         }
       });
-    productsList.filterProducts();
+    changeFilterAmount();
   });
+});
+
+//button to apply filters
+let filterApplyButton = document.querySelector('.filter-apply');
+
+filterApplyButton.addEventListener('click', () => {
+  productsList.filterProducts();
+  toggleFilterModal();
+});
+
+//button to clear filters
+let clearFiltersButton = document.querySelector('.filter-clear');
+
+clearFiltersButton.addEventListener('click', () => {
+  productsList.changeFilters = [];
+  productsList.filterProducts();
+
+  Array.prototype.forEach.call(checkboxes, (elem) => {
+    elem.checked = false;
+  });
+
+  toggleFilterModal();
+  changeFilterAmount();
 });

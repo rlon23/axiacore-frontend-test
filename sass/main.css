@@ -248,6 +248,7 @@ body {
 }
 
 .main .filter-btn .filters {
+  display: none;
   width: 26px;
   height: 18px;
   background-color: #ffffff;
@@ -397,6 +398,7 @@ body {
 }
 
 .main .filter-modal .options .filter-buttons .filter-apply .filters {
+  display: none;
   width: 26px;
   height: 18px;
   background-color: #ffffff;

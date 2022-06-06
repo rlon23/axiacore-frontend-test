@@ -219,6 +219,7 @@ body {
     border: 0;
 
     .filters {
+      display: none;
       width: 26px;
       height: 18px;
       background-color: $white;
@@ -346,6 +347,7 @@ body {
           }
 
           .filters {
+            display: none;
             width: 26px;
             height: 18px;
             background-color: $white;
