@@ -1,28 +1,64 @@
-const getData = () => {
-  fetch('./../products.json')
-    .then((res) => res.json())
-    .then((data) => createHTML(data));
-};
+class ProductsList {
+  constructor(name) {
+    this.name = name;
+    this.unfilteredList;
+    this.filteredList;
+    this.filters = [];
+    this.getData();
+  }
 
-getData();
+  getData() {
+    fetch('./../products.json')
+      .then((res) => res.json())
+      .then((data) => (this.unfilteredList = data))
+      .then(() => this.createHTML(this.unfilteredList));
+  }
 
-// create products list from data
-const createHTML = (productsData) => {
-  var emptyTemplate = document.getElementById('productsTemplate').innerHTML;
-  var compiledTemplate = Handlebars.compile(emptyTemplate);
-  var generatedHTML = compiledTemplate(productsData);
-  var productsContainer = document.querySelector('.products-container');
-  productsContainer.innerHTML = generatedHTML;
-};
+  set changeFilters(newFilter) {
+    this.filters = newFilter;
+  }
 
-// +-+-+-+-
+  get filtersLength() {
+    return this.filters.length;
+  }
 
-// gets filter modal button
+  // create products list from data
+  createHTML(data) {
+    let emptyTemplate = document.getElementById('productsTemplate').innerHTML;
+    let compiledTemplate = Handlebars.compile(emptyTemplate);
+    let generatedHTML = compiledTemplate(data);
+    let productsContainer = document.querySelector('.products-container');
+    productsContainer.innerHTML = generatedHTML;
+  }
+
+  filterProducts() {
+    if (!this.filters.length) {
+      //updates HTML content
+      this.createHTML(this.unfilteredList);
+    } else {
+      let localData = this.unfilteredList.products.filter((item) =>
+        this.filters.includes(item.filterId)
+      );
+
+      this.filteredList = {
+        products: localData,
+      };
+
+      //updates HTML content
+      this.createHTML(this.filteredList);
+    }
+  }
+}
+
+// new productList object
+let productsList = new ProductsList('cervezas');
+console.log(productsList);
+
+// gets filter modal button and close button
 let filterModalToggle = document.querySelector('.filter-btn');
-let filterApplyButton = document.querySelector('.filter-apply');
-let filterModalMenu = document.querySelector('.filter-modal');
 let filterCloseModal = document.querySelector('.close-modal');
-let productsUnfiltered = document.getElementsByClassName('product-card');
+
+let filterModalMenu = document.querySelector('.filter-modal');
 let bodyEl = document.body;
 
 // onClick listener
@@ -43,13 +79,10 @@ function toggleFilterModal() {
 // checkboxes elements
 let checkboxes = document.getElementsByClassName('input');
 
-// filters array
-let filters = [];
-
 // add listeners to checkbox and adds filters to the array
 Array.prototype.forEach.call(checkboxes, function (elem) {
   elem.addEventListener('change', function () {
-    filters = Array.from(checkboxes)
+    productsList.changeFilters = Array.from(checkboxes)
       .filter((i) => i.checked)
       .map((i) => {
         if (i.id === 'rubia') {
@@ -62,27 +95,6 @@ Array.prototype.forEach.call(checkboxes, function (elem) {
           return 3;
         }
       });
-    // console.log(filters);
+    productsList.filterProducts();
   });
 });
-
-// add listener to filter apply button
-filterApplyButton.addEventListener('click', applyFilters);
-
-function applyFilters() {
-  Array.prototype.forEach.call(productsUnfiltered, function (product) {
-    if (!filters.length) {
-      product.classList.remove('hide');
-    }
-
-    filters.forEach(function (entry) {
-      if (product.classList.contains(entry)) {
-        product.classList.remove('hide');
-      } else {
-        product.classList.add('hide');
-      }
-    });
-  });
-
-  toggleFilterModal();
-}
